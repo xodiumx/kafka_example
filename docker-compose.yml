@@ -25,13 +25,48 @@ services:
       depends_on:
           - zookeeper
 
-  kafka-ui:
-    image: provectuslabs/kafka-ui:latest
-    container_name: kafka-ui
-    ports:
-      - 8090:8080
-    restart: always
+  # kafka-ui:
+  #   image: provectuslabs/kafka-ui:latest
+  #   container_name: kafka-ui
+  #   ports:
+  #     - 8090:8080
+  #   restart: always
+  #   environment:
+  #     - KAFKA_CLUSTERS_0_NAME=local
+  #     - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9092
+  #     - DYNAMIC_CONFIG_ENABLED=true
+
+  # akhq-kafka-ui:
+  #   image: tchiotludo/akhq
+  #   restart: unless-stopped
+  #   environment:
+  #     AKHQ_CONFIGURATION: |
+  #       akhq:
+  #         connections:
+  #           docker-kafka-server:
+  #             properties:
+  #               bootstrap.servers: "kafka:9092"
+  #             schema-registry:
+  #               url: "http://schema-registry:8085"
+  #             connect:
+  #               - name: "connect"
+  #                 url: "http://connect:8083"
+  #   ports:
+  #     - 8080:8080
+
+  # kafdrop-kafka-ui:
+  #   image: obsidiandynamics/kafdrop
+  #   restart: "no"
+  #   ports:
+  #     - "9000:9000"
+  #   environment:
+  #     KAFKA_BROKERCONNECT: "kafka:9092"
+  #   depends_on:
+  #     - "kafka"
+
+  redpanda-kafka-ui:
+    image: redpandadata/console:latest
     environment:
-      - KAFKA_CLUSTERS_0_NAME=local
-      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9092
-      - DYNAMIC_CONFIG_ENABLED=true
+      KAFKA_BROKERS: "kafka:9092"
+    ports:
+      - "8080:8080"
