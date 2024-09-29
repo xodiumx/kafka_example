@@ -15,3 +15,13 @@ aiokafka-produce:
 .PHONY: aiokafka-consume
 aiokafka-consume:
 	python src/aiokafka_example/run_consumer.py
+
+
+.PHONY: confluent-kafka-produce
+confluent-kafka-produce:
+	python src/confluent_kafka_example/run_producer.py
+
+
+.PHONY: confluent-kafka-consume
+confluent-kafka-consume:
+	python src/confluent_kafka_example/run_consumer.py
