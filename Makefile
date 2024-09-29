@@ -25,3 +25,8 @@ confluent-kafka-produce:
 .PHONY: confluent-kafka-consume
 confluent-kafka-consume:
 	python src/confluent_kafka_example/run_consumer.py
+
+
+.PHONY: confluent-kafka-admin
+confluent-kafka-admin:
+	python src/confluent_kafka_example/run_admin.py
