@@ -10,6 +10,7 @@ help:
 	@echo "	 make aiokafka-consume  -  example of consume with aiokafka"
 	@echo "	 make confluent-kafka-produce  -  example of produce with confluent-kafka"
 	@echo "	 make confluent-kafka-consume  -  example of consume with confluent-kafka"
+	@echo "	 make confluent-kafka-admin  -  example of topics create with confluent-kafka"
 
 
 .PHONY: kafka
