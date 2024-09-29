@@ -1,18 +1,23 @@
 from aiokafka import AIOKafkaConsumer
-import asyncio
+
+from settings import settings
+
+LOCAL_SERVER_ID = 0
 
 
-async def consume():
-    consumer = AIOKafkaConsumer("my_topic", "my_other_topic", bootstrap_servers="localhost:29092", group_id="my-group")
-    # Get cluster layout and join group `my-group`
+async def consume_messages() -> None:
+    # create consumer instance
+    consumer = AIOKafkaConsumer(
+        settings.KAFKA_TOPIC_NAME,
+        bootstrap_servers=settings.KAFKA_HOSTS[LOCAL_SERVER_ID],
+        group_id=settings.KAFKA_GROUP_ID,
+    )
+    # start_consume
     await consumer.start()
     try:
-        # Consume messages
+        # get messages from current topic
         async for msg in consumer:
             print("consumed: ", msg.topic, msg.partition, msg.offset, msg.key, msg.value, msg.timestamp)
     finally:
         # Will leave consumer group; perform autocommit if enabled.
         await consumer.stop()
-
-
-asyncio.run(consume())
