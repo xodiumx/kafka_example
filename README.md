@@ -6,28 +6,28 @@
 
 - Set up a virtual environment and install dependicies:
 
-```sh
+```console
 python -m venv venv
 ```
 
 or
 
-```sh
+```console
 pyenv virtualenv 3.12.3 kafka_example
 ```
 
-```sh
+```console
 poetry install
 ```
 
 - Run kafka and kafka-ui in docker
   (by default is kafka-ui from redpanda, but you can uncomment another ui or run your own.)
 
-```sh
+```console
 make kafka
 ```
 
-```sh
+```console
 make kafka-ui
 ```
 
@@ -43,28 +43,26 @@ source set_env.sh
 
 - Aiokafka producer and consumer run:
 
-```sh
+```console
 make aiokafka-produce
 ```
 
-```sh
-
+```console
 make aiokafka-consume
 ```
 
 - Confluent-kafka producer and consumer run:
 
-```sh
+```console
 make confluent-kafka-produce
 ```
 
-
-```sh
+```console
 make confluent-kafka-consume
 ```
 
 - Example of topic creation with confluent admin instance
 
-```sh
+```console
 make confluent-kafka-admin
 ```
