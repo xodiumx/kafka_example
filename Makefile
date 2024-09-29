@@ -1,6 +1,21 @@
+.PHONY: help
+help:
+	@echo "You need to set environment variables using the command:"
+	@echo "	 source set_env.sh"
+	@echo ""
+	@echo "Available commands:"
+	@echo "	 make kafka  -  run kafka in docker"
+	@echo "	 make kafka-ui  -  run kafka UI in docker"
+	@echo "	 make aiokafka-produce  -  example of produce with aiokafka"
+	@echo "	 make aiokafka-consume  -  example of consume with aiokafka"
+	@echo "	 make confluent-kafka-produce  -  example of produce with confluent-kafka"
+	@echo "	 make confluent-kafka-consume  -  example of consume with confluent-kafka"
+
+
 .PHONY: kafka
 kafka:
 	docker-compose -f docker-compose-kafka.yml up -d
+
 
 .PHONY: kafka-ui
 kafka-ui:

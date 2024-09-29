@@ -1,5 +1,14 @@
 # kafka_example
 
+## Description
+
+- In progress
+
+## TODO
+
+- Custom Kafka handlers (produce, consume, admin)
+- Grafana monitoring example
+
 ## Application installation
 
 - Clone repository
@@ -18,6 +27,12 @@ pyenv virtualenv 3.12.3 kafka_example
 
 ```console
 poetry install
+```
+
+- You can view the available commands with:
+
+```console
+make help
 ```
 
 - Run kafka and kafka-ui in docker
