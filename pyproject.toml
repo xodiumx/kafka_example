@@ -1,40 +1,47 @@
 [tool.poetry]
-name = ""
+name = "Kafka-example"
 version = "0.1.0"
-description = ""
-authors = [""]
+description = "Example of clients on python, for work with kafka"
+authors = ["tg - @maxalxeev"]
 readme = "README.md"
 package-mode = false
 
 [tool.poetry.dependencies]
-python = "^3.9"
-annotated-types = "0.6.0"
-attrs = "23.2.0"
-cramjam = "2.8.3"
-crc32c = "2.4"
-iniconfig = "2.0.0"
-kafka-python = "2.0.2"
-kazoo = "2.5.0"
-mccabe = "0.7.0"
-packaging = "24.0"
-pgpubsub = "0.0.5"
-psycopg2 = "2.8.6"
-psycopg2-binary = "2.8.6"
-py = "1.11.0"
-pycodestyle = "2.11.0"
+python = "^3.12"
+orjson = "^3.10.6"
+aiokafka = "^0.11.0"
+confluent-kafka = "^2.5.3"
 pydantic = "2.7.1"
 pydantic-settings = "2.2.1"
 pydantic-core = "2.18.2"
-pykafka = "2.8.0"
-python-dotenv = "1.0.1"
-python-snappy = "0.7.0"
-six = "1.16.0"
-tabulate = "0.8.9"
-tomli = "2.0.1"
-typing-extensions = "4.11.0"
-orjson = "^3.10.6"
-aiokafka = "^0.11.0"
+
+[tool.poetry.group.local.dependencies]
+ruff = "^0.6.8"
+pre-commit = "^3.8.0"
+mypy = "^1.11.2"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+exclude = ["tests/",]
+line-length = 120
+target-version = "py312"
+
+[tool.mypy]
+python_version = "3.12"
+mypy_path = "src"
+ignore_missing_imports = true
+explicit_package_bases = true
+plugins = [
+    "pydantic.mypy",
+]
+
+[tool.pydantic-mypy]
+follow_imports = "skip"
+ignore_missing_imports=true
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+strict_optional = true
