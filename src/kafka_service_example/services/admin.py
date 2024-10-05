@@ -1,3 +1,5 @@
+from enum import EnumType
+
 from .base import KafkaAdminBase
 
 from entities.admin import CreatedTopics, DeletedTopics, TopicsInfo
@@ -43,9 +45,8 @@ class KafkaAdminService(KafkaAdminBase):
         """
         return DeletedTopics(**self._delete_old_topics(topics_for_delete=topics_for_delete))
 
-    def update_partitions(self): ...
-
-    def get_configs_info(self): ...
+    def get_configs_info(self, resource_type: EnumType, resource_name: str) -> dict[str, list]:
+        return self._get_configs_info(resource_type=resource_type, resource_name=resource_name)
 
     def update_configs(self): ...
 

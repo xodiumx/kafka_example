@@ -1,6 +1,7 @@
 import logging
+from enum import EnumType
 
-from confluent_kafka.admin import AdminClient, NewTopic
+from confluent_kafka.admin import AdminClient, NewTopic, ConfigResource
 
 
 logger = logging.getLogger(__name__)
@@ -56,7 +57,7 @@ class KafkaAdminBase:
                 logger.error(f"Failed to create topic {topic}: {exc}")
         return result
 
-    def _delete_old_topics(self, topics_for_delete: list[str]):
+    def _delete_old_topics(self, topics_for_delete: list[str]) -> dict[str, list]:
         fs = self.admin_client.delete_topics(topics=topics_for_delete)
         result: dict[str, list] = {"deleted": [], "not_deleted": []}
         for topic, future in fs.items():
@@ -67,6 +68,21 @@ class KafkaAdminBase:
             except Exception as exc:
                 result.get("not_deleted", []).append((topic, exc))
                 logger.error(f"Failed to delete topic {topic}: {exc}")
+        return result
+
+    def _get_configs_info(self, resource_type: EnumType, resource_name: str) -> dict[str, list]:
+        fs = self.admin_client.describe_configs(
+            resources=[ConfigResource(restype=resource_type, name=resource_name)],
+        )
+        result: dict[str, list] = {"resources": []}
+        for resource, future in fs.items():
+            try:
+                resource_info = future.result()
+                result.get("resources", []).append({resource.name: resource_info})
+                logger.info(f"Resource info recivied for {resource.name}")
+            except Exception as exc:
+                logger.error(f"Failed to get resource info for {resource.name}: {exc}")
+        # print(result)
         return result
 
 
