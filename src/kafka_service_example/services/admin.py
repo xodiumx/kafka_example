@@ -54,9 +54,3 @@ class KafkaAdminService(KafkaAdminBase):
             - BROKER
         """
         return self._get_configs_info(resource_type=resource_type, resource_name=resource_name)
-
-    def update_configs(self): ...
-
-    def get_groups_info(self): ...
-
-    def describe_info(self): ...

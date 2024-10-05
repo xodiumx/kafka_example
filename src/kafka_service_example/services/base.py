@@ -82,7 +82,6 @@ class KafkaAdminBase:
                 logger.info(f"Resource info recivied for {resource.name}")
             except Exception as exc:
                 logger.error(f"Failed to get resource info for {resource.name}: {exc}")
-        # print(result)
         return result
 
 

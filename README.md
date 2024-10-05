@@ -6,7 +6,7 @@
 
 ## TODO
 
-- Custom Kafka handlers (produce, consume, admin)
+- Custom Kafka handlers (produce, consume)
 - Grafana monitoring example
 
 ## Application installation
@@ -80,4 +80,12 @@ make confluent-kafka-consume
 
 ```console
 make confluent-kafka-admin
+```
+
+### Services example:
+
+- Example of service for kafka administartion, [more info in documentation](https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html#adminclient):
+
+```console
+make confluent-kafka-admin-hadler
 ```
