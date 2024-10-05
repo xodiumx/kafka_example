@@ -51,6 +51,6 @@ confluent-kafka-admin:
 	python src/confluent_kafka_example/run_admin.py
 
 
-.PHONY: make confluent-kafka-admin-hadler
-make confluent-kafka-admin-hadler:
+.PHONY: make confluent-kafka-admin-handler
+make confluent-kafka-admin-handler:
 	python src/kafka_service_example/run_admin.py

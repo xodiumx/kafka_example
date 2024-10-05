@@ -82,10 +82,10 @@ make confluent-kafka-consume
 make confluent-kafka-admin
 ```
 
-### Services example:
+### Services example
 
-- Example of service for kafka administartion, [more info in documentation](https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html#adminclient):
+- Example of service for kafka administartion [more info in documentation](https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html#adminclient):
 
 ```console
-make confluent-kafka-admin-hadler
+make confluent-kafka-admin-handler
 ```
