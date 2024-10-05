@@ -11,6 +11,9 @@ help:
 	@echo "	 make confluent-kafka-produce  -  example of produce with confluent-kafka"
 	@echo "	 make confluent-kafka-consume  -  example of consume with confluent-kafka"
 	@echo "	 make confluent-kafka-admin  -  example of topics create with confluent-kafka"
+	@echo ""
+	@echo "Service examples:"
+	@echo "make confluent-kafka-admin-hadler - example of how administrative methods work "
 
 
 .PHONY: kafka
@@ -46,3 +49,8 @@ confluent-kafka-consume:
 .PHONY: confluent-kafka-admin
 confluent-kafka-admin:
 	python src/confluent_kafka_example/run_admin.py
+
+
+.PHONY: make confluent-kafka-admin-hadler
+make confluent-kafka-admin-hadler:
+	python src/kafka_service_example/run_admin.py
