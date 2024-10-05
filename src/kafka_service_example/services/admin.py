@@ -1,6 +1,6 @@
 from .base import KafkaAdminBase
 
-from entities.admin import CreatedTopics, TopicsInfo
+from entities.admin import CreatedTopics, DeletedTopics, TopicsInfo
 
 
 class KafkaAdminService(KafkaAdminBase):
@@ -21,7 +21,8 @@ class KafkaAdminService(KafkaAdminBase):
             )
         )
 
-    def delete_old_topics(self): ...
+    def delete_old_topics(self, topics_for_delete) -> DeletedTopics:
+        return DeletedTopics(**self._delete_old_topics(topics_for_delete=topics_for_delete))
 
     def update_partitions(self): ...
 

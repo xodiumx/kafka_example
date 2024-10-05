@@ -46,14 +46,27 @@ class KafkaAdminBase:
         ]
         fs = self.admin_client.create_topics(new_topics)
         result: dict[str, list] = {"created": [], "not_created": []}
-        for topic, f in fs.items():
+        for topic, future in fs.items():
             try:
-                f.result()
+                future.result()
                 result.get("created", []).append(topic)
                 logger.info(f"Topic {topic} created")
             except Exception as exc:
                 result.get("not_created", []).append((topic, exc))
                 logger.error(f"Failed to create topic {topic}: {exc}")
+        return result
+
+    def _delete_old_topics(self, topics_for_delete: list[str]):
+        fs = self.admin_client.delete_topics(topics=topics_for_delete)
+        result: dict[str, list] = {"deleted": [], "not_deleted": []}
+        for topic, future in fs.items():
+            try:
+                future.result()
+                result.get("deleted", []).append(topic)
+                logger.info(f"Topic {topic} deleted")
+            except Exception as exc:
+                result.get("not_deleted", []).append((topic, exc))
+                logger.error(f"Failed to delete topic {topic}: {exc}")
         return result
 
 

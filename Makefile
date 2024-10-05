@@ -13,7 +13,7 @@ help:
 	@echo "	 make confluent-kafka-admin  -  example of topics create with confluent-kafka"
 	@echo ""
 	@echo "Service examples:"
-	@echo "make confluent-kafka-admin-hadler - example of how administrative methods work "
+	@echo "	 make confluent-kafka-admin-hadler - example of how administrative methods work "
 
 
 .PHONY: kafka

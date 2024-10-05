@@ -20,7 +20,13 @@ def main_admin():
             repliacation_factor=1,
         )
     )
-
+    print()
+    print("Get topic info:")
+    print(admin.get_topics())
+    print()
+    print("Delete topics:")
+    print(admin.delete_old_topics(topics_for_delete=["test_topic_1", "test_topic_2"]))
+    print()
     print("Get topic info:")
     print(admin.get_topics())
 

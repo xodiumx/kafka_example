@@ -26,3 +26,8 @@ class TopicsInfo(BaseModel):
 class CreatedTopics(BaseModel):
     created: list[str]
     not_created: list
+
+
+class DeletedTopics(BaseModel):
+    deleted: list[str]
+    not_deleted: list
