@@ -46,6 +46,13 @@ class KafkaAdminService(KafkaAdminBase):
         return DeletedTopics(**self._delete_old_topics(topics_for_delete=topics_for_delete))
 
     def get_configs_info(self, resource_type: EnumType, resource_name: str) -> dict[str, list]:
+        """
+        Get config info on specific resource, available resources:
+            - ANY
+            - TOPIC
+            - GROUP
+            - BROKER
+        """
         return self._get_configs_info(resource_type=resource_type, resource_name=resource_name)
 
     def update_configs(self): ...
