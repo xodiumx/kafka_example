@@ -15,6 +15,7 @@ services:
           - 9092:9092
           - 9093:9093
           - 29092:29092
+          - 7071:7071
       environment:
           - KAFKA_BROKER_ID=1
           - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
@@ -22,5 +23,15 @@ services:
           - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
           - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,PLAINTEXT_HOST://:29092
           - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+          - JMX_PORT=5556
+          - JMX_HOST=kafka
+          - KAFKA_JMX_PORT=5556
+          - KAFKA_JMX_HOST=kafka
+          - KAFKA_JMX_ENABLED=true
+          - KAFKA_METRICS_ENABLED=true
+          - KAFKA_OPTS=-javaagent:/opt/jmx_prometheus_javaagent-1.0.1.jar=7071:/opt/kafka-jmx-config.yml
+      volumes:
+        - ./kafka-jmx-config.yml:/opt/kafka-jmx-config.yml # конфиг JMX Exporter
+        - ./jmx_prometheus_javaagent-1.0.1.jar:/opt/jmx_prometheus_javaagent-1.0.1.jar # JMX Exporter jar
       depends_on:
           - zookeeper

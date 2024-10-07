@@ -1,0 +1,9 @@
+rules:
+  - pattern: "kafka.server<type=(.+), name=(.+)><>Count"
+    name: kafka_$1_$2_count
+    type: COUNTER
+    help: "Kafka server $1 $2 count"
+  - pattern: "kafka.server<type=(.+), name=(.+)>"
+    name: kafka_$1_$2
+    type: GAUGE
+    help: "Kafka server $1 $2"
