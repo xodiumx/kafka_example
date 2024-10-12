@@ -35,6 +35,12 @@ poetry install
 make help
 ```
 
+- Setup settings for docker
+
+```console
+make setup
+```
+
 - Run kafka and kafka-ui in docker
   (by default is kafka-ui from redpanda, but you can uncomment another ui or run your own.)
 

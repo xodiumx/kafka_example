@@ -2,6 +2,7 @@
 help:
 	@echo "You need to set environment variables using the command:"
 	@echo "	 source set_env.sh"
+	@echo "	 make setup  -  setup docker settings"
 	@echo ""
 	@echo "Available commands:"
 	@echo "	 make kafka  -  run kafka in docker"
@@ -14,6 +15,14 @@ help:
 	@echo ""
 	@echo "Service examples:"
 	@echo "	 make confluent-kafka-admin-hadler - example of how administrative methods work "
+	@echo ""
+	@echo "Grafana monitoring:"
+	@echo "	 make grafana  -  clones the repository before launching it, and after use this command for start grafana"
+
+
+.PHONY: setup
+setup:
+	docker network create grafana_example_default
 
 
 .PHONY: kafka
