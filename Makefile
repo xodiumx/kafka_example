@@ -21,6 +21,11 @@ kafka:
 	docker-compose -f docker-compose-kafka.yml up -d
 
 
+.PHONY: grafana
+grafana:
+	docker-compose -f ../grafana_example/docker-compose-grafana.yml up -d
+
+
 .PHONY: kafka-ui
 kafka-ui:
 	docker-compose -f docker-compose-kafka-ui.yml up -d

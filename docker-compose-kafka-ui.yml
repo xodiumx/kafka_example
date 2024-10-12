@@ -7,11 +7,15 @@ services:
   #   container_name: kafka-ui
   #   ports:
   #     - 8090:8080
-  #   restart: always
-  #   environment:
-  #     - KAFKA_CLUSTERS_0_NAME=local
-  #     - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9092
-  #     - DYNAMIC_CONFIG_ENABLED=true
+    # restart: always
+    # environment:
+    #   - KAFKA_CLUSTERS_0_NAME=local
+    #   - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9092
+    #   - DYNAMIC_CONFIG_ENABLED=true
+    # networks:
+    #   - kafka
+    #   - grafana_example_default
+
 
   # akhq-kafka-ui:
   #   image: tchiotludo/akhq
@@ -28,8 +32,12 @@ services:
   #             connect:
   #               - name: "connect"
   #                 url: "http://connect:8083"
-  #   ports:
-  #     - 8080:8080
+    # ports:
+    #   - 8080:8080
+    # networks:
+    #   - kafka
+    #   - grafana_example_default
+
 
   # kafdrop-kafka-ui:
   #   image: obsidiandynamics/kafdrop
@@ -38,8 +46,11 @@ services:
   #     - "9000:9000"
   #   environment:
   #     KAFKA_BROKERCONNECT: "kafka:9092"
-  #   depends_on:
-  #     - "kafka"
+    # depends_on:
+    #   - "kafka"
+    # networks:
+    #   - kafka
+    #   - grafana_example_default
 
   redpanda-kafka-ui:
     image: redpandadata/console:latest
@@ -47,3 +58,12 @@ services:
       KAFKA_BROKERS: "kafka:9092"
     ports:
       - "8080:8080"
+    networks:
+      - kafka
+      - grafana_example_default
+
+networks:
+  kafka:
+    driver: bridge
+  grafana_example_default:
+    external: true

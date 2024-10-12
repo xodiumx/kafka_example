@@ -8,6 +8,9 @@ services:
           - 2181:2181
       environment:
           - ALLOW_ANONYMOUS_LOGIN=yes
+      networks:
+        - kafka
+        - grafana_example_default
 
   kafka:
       image: bitnami/kafka:latest
@@ -35,3 +38,13 @@ services:
         - ./jmx_prometheus_javaagent-1.0.1.jar:/opt/jmx_prometheus_javaagent-1.0.1.jar # JMX Exporter jar
       depends_on:
           - zookeeper
+      networks:
+        - kafka
+        - grafana_example_default
+
+
+networks:
+  kafka:
+    driver: bridge
+  grafana_example_default:
+    external: true
