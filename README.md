@@ -2,7 +2,13 @@
 
 ## Description
 
-- In progress
+> this repository was created for the trial use of apache kafka
+
+- 2 python clients are used as an example (`confluent-kafka` and `aiokafka`)
+- Inside contains scripts for producing and consuming messages in kafka
+- There is also an example of a service using confluent-kafka, and a notebook using it
+- In addition to using kafka, the repository contains an example of kafka monitoring using grafana and prometheus
+- I hope you find this repository useful and learn something new for yourself
 
 ## TODO
 
