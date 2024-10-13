@@ -7,7 +7,6 @@
 ## TODO
 
 - Custom Kafka handlers (produce, consume)
-- Grafana monitoring example
 
 ## Application installation
 
@@ -93,3 +92,23 @@ make confluent-kafka-admin
 - Example of service for kafka administartion [more info in documentation](https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html#adminclient):
 
 - You can try use notebooks in `./notebooks` directory
+
+### Kafka monitoring
+
+- Clone repository [grafana_example](https://github.com/xodiumx/grafana_example)
+
+- Run grafana
+
+```console
+make grafana
+```
+
+- Copy example of dashboard for kafka - `./dashboards/kafka_dashboards_example.json`
+
+- Create new dashboard
+
+- Running a script to create data in the dashboard
+
+```console
+make kafka-loop
+```
