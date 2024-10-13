@@ -92,6 +92,4 @@ make confluent-kafka-admin
 
 - Example of service for kafka administartion [more info in documentation](https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html#adminclient):
 
-```console
-make confluent-kafka-admin-handler
-```
+- You can try use notebooks in `./notebooks` directory

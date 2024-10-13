@@ -13,9 +13,6 @@ help:
 	@echo "	 make confluent-kafka-consume  -  example of consume with confluent-kafka"
 	@echo "	 make confluent-kafka-admin  -  example of topics create with confluent-kafka"
 	@echo ""
-	@echo "Service examples:"
-	@echo "	 make confluent-kafka-admin-hadler - example of how administrative methods work "
-	@echo ""
 	@echo "Grafana monitoring:"
 	@echo "	 make grafana  -  clones the repository before launching it, and after use this command for start grafana"
 
