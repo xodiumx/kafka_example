@@ -15,6 +15,7 @@ help:
 	@echo ""
 	@echo "Grafana monitoring:"
 	@echo "	 make grafana  -  clones the repository before launching it, and after use this command for start grafana"
+	@echo "  make kafka-loop  -  infinite data produce for dashboard charts"
 
 
 .PHONY: setup
@@ -62,6 +63,6 @@ confluent-kafka-admin:
 	python src/confluent_kafka_example/run_admin.py
 
 
-.PHONY: make confluent-kafka-admin-handler
-make confluent-kafka-admin-handler:
-	python src/kafka_service_example/run_admin.py
+.PHONY: kafka-loop
+kafka-loop:
+	python src/confluent_kafka_example/run_loop.py

@@ -1,3 +1,6 @@
+import time
+import random
+
 import orjson
 
 from confluent_kafka import Producer
@@ -19,13 +22,21 @@ def delivery_report(err, msg: Message) -> None:
         print(f"Message {msg.value()} delivered to: \ntopic - {msg.topic()} \npartition - [{msg.partition()}]")
 
 
-def produce_messages() -> None:
+def produce_messages(messages_count: int, infinite: bool) -> None:
     """
     Test kafka producer
     """
     producer = Producer({"bootstrap.servers": settings.KAFKA_HOSTS[LOCAL_SERVER_ID]})
 
-    for i in range(1_000):
+    if infinite:
+        i = 0
+        while True:
+            time.sleep(random.random())
+            producer.poll(0)
+            producer.produce(settings.KAFKA_TOPIC_NAME, orjson.dumps(f"Message {i}"), callback=delivery_report)
+            i += 1
+
+    for i in range(messages_count):
         # Trigger any available delivery report callbacks from previous produce() calls
         producer.poll(0)
 
