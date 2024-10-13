@@ -26,12 +26,6 @@ services:
           - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
           - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,PLAINTEXT_HOST://:29092
           - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
-          - JMX_PORT=5556
-          - JMX_HOST=kafka
-          - KAFKA_JMX_PORT=5556
-          - KAFKA_JMX_HOST=kafka
-          - KAFKA_JMX_ENABLED=true
-          - KAFKA_METRICS_ENABLED=true
           - KAFKA_OPTS=-javaagent:/opt/jmx_prometheus_javaagent-1.0.1.jar=7071:/opt/kafka-jmx-config.yml
       volumes:
         - ./kafka-jmx-config.yml:/opt/kafka-jmx-config.yml # конфиг JMX Exporter
