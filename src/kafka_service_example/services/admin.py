@@ -2,7 +2,7 @@ from enum import EnumType
 
 from .base import KafkaAdminBase
 
-from entities.admin import CreatedTopics, DeletedTopics, TopicsInfo
+from kafka_service_example.entities.admin import CreatedTopics, DeletedTopics, TopicsInfo
 
 
 class KafkaAdminService(KafkaAdminBase):
